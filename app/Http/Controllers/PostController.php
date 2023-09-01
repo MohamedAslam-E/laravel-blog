@@ -50,7 +50,7 @@ class PostController extends Controller
 
             $postTag->save();
         }
-        return 'hello';
+        return redirect()->route('post.show');
     }
 
 }
