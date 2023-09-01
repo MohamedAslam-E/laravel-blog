@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->date('published_at');
+            $table->date('published_at')->default(now());
             $table->unsignedBigInteger('category_id');
 
             $table->timestamps();

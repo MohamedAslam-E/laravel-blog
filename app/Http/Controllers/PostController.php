@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\PostTag;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class dashboardController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->input('tag_ids'));
+        // dd($request->input('tag_ids'));
 
         $validatedData = $request->validate([
             'title' => 'required',
@@ -36,10 +37,14 @@ class dashboardController extends Controller
 
         $post = Post::create($validatedData);
 
-        
+        foreach ($request->input('tag_ids') as $tag_id) {
+            // $post->tags()->attach($tag_id);
+            $postTag = new PostTag();
+            $postTag->post_id=$post->id;
+            $postTag->tag_id=$tag_id;
 
-        foreach ($request->tag_ids as $tag_id) {
-            $post->tags()->attach($tag_id);
+            $postTag->save();
+
         }
         return redirect('post');
     }
