@@ -13,12 +13,12 @@ class CategoryController extends Controller
         $category = Category::all();
         return view('categoryTable')->with('category', $category);
     }
-
+    
     public function create()
     {
         return view('categoryFrom');
     }
-
+    
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -27,9 +27,10 @@ class CategoryController extends Controller
         $input = new Category;
         $input->name = $validatedData['name'];
         $input->save();
-
+        
         return redirect()->route('category.index');
     }
+    
 
     public function edit($id)
     {

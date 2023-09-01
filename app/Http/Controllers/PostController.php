@@ -17,22 +17,8 @@ class PostController extends Controller
         return view('postForm', compact('categories', 'tags'));;
     }
     
-    public function show(){
-        $posts = Post::all();
-        return view('postIndex',['posts' => $posts]);
-    }
-
-    public function create()
-    {
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('posts.create', compact('categories', 'tags'));
-    }
-
     public function store(Request $request)
     {
-        // dd($request->input('tag_ids'));
-
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -43,14 +29,27 @@ class PostController extends Controller
         $post = Post::create($validatedData);
 
         foreach ($request->input('tag_ids') as $tag_id) {
-            // $post->tags()->attach($tag_id);
             $postTag = new PostTag();
             $postTag->post_id=$post->id;
             $postTag->tag_id=$tag_id;
-
             $postTag->save();
         }
         return redirect()->route('post.show');
     }
+    
+    public function create()
+    {
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('posts.create', compact('categories', 'tags'));
+    }
+    
+    public function show(){
+        $posts = Post::all();
+        return view('postIndex',['posts' => $posts]);
+    }
+    
+
+
 
 }
