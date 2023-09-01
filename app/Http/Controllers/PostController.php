@@ -16,6 +16,11 @@ class PostController extends Controller
         $tags = Tag::all();
         return view('postForm', compact('categories', 'tags'));;
     }
+    
+    public function show(){
+        $posts = Post::all();
+        return view('postIndex',['posts' => $posts]);
+    }
 
     public function create()
     {
@@ -44,8 +49,8 @@ class PostController extends Controller
             $postTag->tag_id=$tag_id;
 
             $postTag->save();
-
         }
         return 'hello';
     }
+
 }

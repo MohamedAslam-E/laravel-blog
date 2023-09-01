@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    {{-- <div>
+    @foreach ($posts as $post)
+    <div>
         <h2>{{ $post->title }}</h2>
         <p>{{ $post->description }}</p>
         <p>Category: {{ $post->category->name }}</p>
@@ -19,7 +20,7 @@
             @endforeach
         </p>
     </div>
-    <h3>hhhhhi</h3> --}}
+    @endforeach
 </body>
 
 </html>
