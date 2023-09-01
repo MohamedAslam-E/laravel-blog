@@ -28,7 +28,7 @@ class CategoryController extends Controller
         $input->name = $validatedData['name'];
         $input->save();
 
-        return redirect()->route('category.indexx');
+        return redirect()->route('category.index');
     }
 
     public function edit($id)
@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->update($input);
 
-        return redirect()->route('category.indexx');
+        return redirect()->route('category.index');
     }
 
     public function delete($id)

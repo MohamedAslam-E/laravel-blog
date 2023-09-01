@@ -46,6 +46,6 @@ class PostController extends Controller
             $postTag->save();
 
         }
-        return redirect('post');
+        return 'hello';
     }
 }

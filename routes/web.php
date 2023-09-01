@@ -28,10 +28,10 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 //post
 Route::get('/layout', [PostController::class, 'index']);
-Route::post('/post', [PostController::class, 'store'])->name('post.store');
+Route::post('/', [PostController::class, 'store'])->name('post.store');
 //category
 Route::get('/category', [CategoryController::class, 'create'])->name('category.show');
-Route::get('/category/index', [CategoryController::class, 'index'])->name('category.indexx');
+Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
 Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
@@ -39,7 +39,7 @@ Route::delete('/category/delete/{id}', [CategoryController::class, 'delete'])->n
 //tags
 Route::get('/tag/index', [TagController::class, 'index'])->name('tag.index');
 Route::get('/tag/edit/{id}', [TagController::class, 'edit'])->name('tag.edit');
-Route::get('/tag/create', [TagController::class, 'create'])->name('tag.show');
+Route::get('/tag/create', [TagController::class, 'create'])->name('tag.create');
 Route::put('/tag/update/{id}', [TagController::class, 'update'])->name('tag.update');
 Route::post('/tag/store', [TagController::class, 'store'])->name('tag.store');
 Route::delete('/tag/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');

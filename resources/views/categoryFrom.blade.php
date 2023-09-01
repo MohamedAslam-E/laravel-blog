@@ -15,7 +15,7 @@
         <input type="text" name="name">
         <button type="submit">submit</button>
     </form>
-    <a href="{{ route('category.indexx') }}">category table</a>
+    <a href="{{ route('category.index') }}">category table</a>
 </body>
 
 </html>
