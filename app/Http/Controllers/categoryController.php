@@ -6,7 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
@@ -14,7 +14,7 @@ class categoryController extends Controller
         return view('categoryTable')->with('category', $category);
     }
 
-    public function show()
+    public function create()
     {
         return view('categoryFrom');
     }

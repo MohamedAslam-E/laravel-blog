@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\tagController;
-use App\Http\Controllers\postController;
-use App\Http\Controllers\categoryController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\dashboardController;
 
 /*
@@ -27,19 +27,19 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 //post
-Route::get('/layout', [dashboardController::class, 'index']);
-Route::post('/post', [dashboardController::class, 'store'])->name('post.store');
+Route::get('/layout', [PostController::class, 'index']);
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
 //category
-Route::get('/category', [categoryController::class, 'show'])->name('category.show');
-Route::get('/category/index', [categoryController::class, 'index'])->name('category.indexx');
-Route::post('/category/store', [categoryController::class, 'store'])->name('category.store');
-Route::get('/category/edit/{id}', [categoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/update/{id}', [categoryController::class, 'update'])->name('category.update');
-Route::delete('/category/delete/{id}', [categoryController::class, 'delete'])->name('category.delete');
+Route::get('/category', [CategoryController::class, 'create'])->name('category.show');
+Route::get('/category/index', [CategoryController::class, 'index'])->name('category.indexx');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
 //tags
-Route::get('/tag/index', [tagController::class, 'index'])->name('tag.index');
-Route::get('/tag/edit/{id}', [tagController::class, 'edit'])->name('tag.edit');
-Route::get('/tag/show', [tagController::class, 'show'])->name('tag.show');
-Route::put('/tag/update/{id}', [tagController::class, 'update'])->name('tag.update');
-Route::post('/tag/store', [tagController::class, 'store'])->name('tag.store');
-Route::delete('/tag/delete/{id}', [tagController::class, 'delete'])->name('tag.delete');
+Route::get('/tag/index', [TagController::class, 'index'])->name('tag.index');
+Route::get('/tag/edit/{id}', [TagController::class, 'edit'])->name('tag.edit');
+Route::get('/tag/create', [TagController::class, 'create'])->name('tag.show');
+Route::put('/tag/update/{id}', [TagController::class, 'update'])->name('tag.update');
+Route::post('/tag/store', [TagController::class, 'store'])->name('tag.store');
+Route::delete('/tag/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');

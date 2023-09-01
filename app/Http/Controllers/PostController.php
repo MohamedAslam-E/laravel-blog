@@ -8,7 +8,7 @@ use App\Models\PostTag;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class dashboardController extends Controller
+class PostController extends Controller
 {
     public function index()
     {
