@@ -32,6 +32,11 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag = Tag::find($id);
+
+        if(!$tag){
+            return 404;
+        }
+
         return view('tag.edit')->with('tag', $tag);
     }
 
@@ -42,6 +47,11 @@ class TagController extends Controller
         ]);
 
         $tag = Tag::find($id);
+
+        if($tag){
+            return 404;
+        }
+
         $tag->update($input);
 
         return redirect()->route('tag.index');
@@ -51,6 +61,11 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tag = Tag::find($id);
+
+        if($tag){
+            return 404;
+        }
+        
         $tag->delete();
 
         return redirect()->route('tag.index');

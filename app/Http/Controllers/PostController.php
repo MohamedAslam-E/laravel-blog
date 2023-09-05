@@ -28,8 +28,8 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'category_id' => 'required',
-            'tag_ids' => 'array'
+            'category_id' => 'required|exists:categories,id',
+            'tag_ids' => 'array|exists:tags,id'
         ]);
 
         $post = Post::create($validatedData);

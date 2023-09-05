@@ -34,6 +34,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
+
+        if(!$category){
+            return 404;
+        }
+
         return view('category.edit')->with('category', $category);
     }
 
@@ -43,6 +48,11 @@ class CategoryController extends Controller
             'name' => 'required'
         ]);
         $category = Category::find($id);
+
+        if(!$category){
+            return 404;
+        }
+        
         $category->update($input);
 
         return redirect()->route('category.index');
@@ -51,6 +61,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
+
+        if(!$category){
+            return 404;
+        }
+        
         $category->delete();
 
         return redirect()->route('category.index');
