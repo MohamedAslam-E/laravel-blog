@@ -23,13 +23,6 @@ class PostController extends Controller
         return view('post.create', compact('categories', 'tags'));
     }
 
-    // public function show()
-    // {
-    //     $categories = Category::all();
-    //     $tags = Tag::all();
-    //     return view('post.index', compact('categories', 'tags'));;
-    // }
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -47,6 +40,6 @@ class PostController extends Controller
             $postTag->tag_id = $tag_id;
             $postTag->save();
         }
-        return redirect()->route('post.show');
+        return redirect()->route('post.index');
     }   
 }
