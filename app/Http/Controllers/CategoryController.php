@@ -11,12 +11,12 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::all();
-        return view('categoryTable')->with('category', $category);
+        return view('category.index')->with('category', $category);
     }
     
     public function create()
     {
-        return view('categoryFrom');
+        return view('category.create');
     }
     
     public function store(Request $request)
@@ -31,11 +31,10 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
     
-
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('categoryUpdate')->with('category', $category);
+        return view('category.edit')->with('category', $category);
     }
 
     public function update(Request $request, $id)
@@ -49,7 +48,7 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $category = Category::find($id);
         $category->delete();

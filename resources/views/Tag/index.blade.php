@@ -24,7 +24,7 @@
                     <td>{{ $item->name }}</td>
                     <td>
                         <a href="{{ route('tag.edit', $item->id) }}" class="btn">edit</a>
-                        <form action="{{ route('tag.delete', $item->id) }}" method="POST">
+                        <form action="{{ route('tag.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit">delete</button>

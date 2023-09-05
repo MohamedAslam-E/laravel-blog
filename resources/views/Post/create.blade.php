@@ -24,9 +24,9 @@
             repudiandae aliquam adipisci quia.</p>
     </section>
     <div class="container">
-        <a href="{{ route('category.show') }}" class="btn btn-success">add category</a>
+        <a href="{{ route('category.create') }}" class="btn btn-success">add category</a>
         <a href="{{ route('tag.create') }}" class="btn btn-success">add tags</a>
-        <a href="{{ route('post.show') }}" class="btn btn-success">posts</a>
+        {{-- <a href="{{ route('post.index') }}" class="btn btn-success">posts</a> --}}
         <form action="{{ route('post.store') }}" method="POST">
             @csrf
             <div class="form-group col-6 container">

@@ -10,12 +10,12 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        return view('tagTable')->with('tags', $tags);
+        return view('Tag.index')->with('tags', $tags);
     }
 
     public function create()
     {
-        return view('tagForm');
+        return view('Tag.create');
     }
 
     public function store(Request $request)
@@ -29,25 +29,30 @@ class TagController extends Controller
         return redirect()->route('tag.index');
     }
 
+    public function edit($id)
+    {
+        $tag = Tag::find($id);
+        return view('Tag.edit')->with('tag', $tag);
+    }
+
     public function update(Request $request, $id)
     {
         $input = $request->validate([
             'name' => 'required',
         ]);
+
         $tag = Tag::find($id);
         $tag->update($input);
+
         return redirect()->route('tag.index');
     }
 
-    public function edit($id)
-    {
-        $tag = Tag::find($id);
-        return view('tagUpdate')->with('tag', $tag);
-    }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $tag = Tag::find($id);
         $tag->delete();
+
+        return redirect()->route('tag.index');
     }
 }
